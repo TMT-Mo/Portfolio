@@ -19,22 +19,23 @@ export default defineConfig({
     // open: true,
     port: 3001,
   },
+  base: "/vite-deploy/",
   // mode: "development",
-  build: {
-    minify: false,
-  },
-  css: {
-    preprocessorOptions: {
-      less: {
-        modifyVars: {
-          "primary-color": "#0757A2",
-          "secondary-color": "#16aced",
-        },
-        javascriptEnabled: true,
-        additionalData: "@root-entry-name: default;",
-      },
-    },
-  },
+  // build: {
+  //   minify: false,
+  // },
+  // css: {
+  //   preprocessorOptions: {
+  //     less: {
+  //       modifyVars: {
+  //         "primary-color": "#0757A2",
+  //         "secondary-color": "#16aced",
+  //       },
+  //       javascriptEnabled: true,
+  //       additionalData: "@root-entry-name: default;",
+  //     },
+  //   },
+  // },
   resolve: {
     alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }],
     
