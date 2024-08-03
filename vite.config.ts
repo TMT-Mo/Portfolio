@@ -19,7 +19,7 @@ export default defineConfig({
     // open: true,
     port: 3001,
   },
-  base: "/Second-Portfolio/",
+  base: "/Portfolio/",
   // mode: "development",
   // build: {
   //   minify: false,
