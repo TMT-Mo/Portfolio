@@ -158,7 +158,7 @@ const Hero = () => {
               creating responsive and user-friendly UIs with forms and tables,
               ensuring a positive UX that meets customer requirements.
             </p>
-            <a href={MyResume} download={MyResume}>
+            <a href={MyResume} download={'Junior_Frontend_Developer_ToMinhTriet.pdf'}>
               <button
                 className={` px-8 py-4 border group relative border-blue-600 w-fit text-white font-medium hover:text-black rounded-xl overflow-hidden bg-transparent`}
               >
