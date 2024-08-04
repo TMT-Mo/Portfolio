@@ -11,6 +11,7 @@ import linkedinLogo from "assets/104493_linkedin_icon.svg";
 import gmailLogo from "assets/gmail.svg";
 import phoneLogo from "assets/bxs-phone.svg";
 import zaloLogo from "assets/icons8-zalo.svg";
+import { IoMdDownload } from "react-icons/io";
 import { isMobile } from "react-device-detect";
 const Hero = () => {
   const defaultOptions = {
@@ -41,7 +42,7 @@ const Hero = () => {
       <Container
         className={`z-0 px-5 relative items-center justify-center pt-10 flex flex-col h-fit min-w-full p-0 md:h-screen md:pt-0`}
       >
-         <div className=" flex-col flex gap-10 md:hidden">
+        <div className=" flex-col flex gap-10 md:hidden">
           <div className="flex flex-col gap-10 ">
             <div className="flex flex-col gap-3 text-start">
               <h1 className="text-white font-bold text-3xl">Triet Minh</h1>
@@ -111,11 +112,7 @@ const Hero = () => {
                 <img src={zaloLogo} className="h-6 " alt="" />
               </div>
             </a>
-            <a
-              href="tel:0775509168"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href="tel:0775509168" target="_blank" rel="noreferrer">
               <div className="rounded-full p-[4px] bg-gray-300 transition duration-500 ease-out hover:bg-white hover:scale-110">
                 <img src={phoneLogo} className="h-6 " alt="" />
               </div>
@@ -158,18 +155,23 @@ const Hero = () => {
               creating responsive and user-friendly UIs with forms and tables,
               ensuring a positive UX that meets customer requirements.
             </p>
-            <a href={MyResume} download={'Junior_Frontend_Developer_ToMinhTriet.pdf'}>
+            <a
+              href={MyResume}
+              download={"Junior_Frontend_Developer_ToMinhTriet.pdf"}
+            >
               <button
-                className={` px-8 py-4 border group relative border-blue-600 w-fit text-white font-medium hover:text-black rounded-xl overflow-hidden bg-transparent`}
+                className={`flex gap-2 items-center px-6 py-3 border group relative border-blue-600 w-fit text-white font-medium hover:text-black rounded-xl overflow-hidden bg-transparent`}
               >
-                Download CV
+                <IoMdDownload />
+                <span>Download CV</span>
                 <div
                   className={`absolute hidden top-0 left-0 ${classes.downloadBtn} group-hover:block`}
                 >
                   <button
-                    className={`px-8 py-4 border relative w-fit whitespace-nowrap text-black font-medium`}
+                    className={`flex gap-2 items-center px-6 py-3 border relative w-fit whitespace-nowrap text-black font-medium`}
                   >
-                    Download CV
+                    <IoMdDownload />
+                    <span>Download CV</span>
                   </button>
                 </div>
               </button>
@@ -213,7 +215,10 @@ const Hero = () => {
         >
           {/* <span className="font-medium">Scroll</span> */}
 
-          <TbArrowBigDownLines fontSize={20} className="duration-300 hover:fill-blue-500"/>
+          <TbArrowBigDownLines
+            fontSize={20}
+            className="duration-300 hover:fill-blue-500"
+          />
         </button>
       </Container>
     </section>

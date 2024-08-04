@@ -15,14 +15,18 @@ import gmailLogo from "assets/gmail.svg";
 import phoneLogo from "assets/bxs-phone.svg";
 import zaloLogo from "assets/icons8-zalo.svg";
 import Lottie from "react-lottie";
-
-
+import { IoMdDownload } from "react-icons/io";
+import classes from "components/Hero/Hero.module.css";
+import MyResume from "../../cv/cv.pdf";
+import { RiCustomerService2Fill } from "react-icons/ri";
 
 const SummaryInfo = () => {
   const workFlowRef = useRef<HTMLDivElement>(null);
   const technologiesRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
-  const [scrollPosition, setScrollPosition] = useState<"timeline" | "workflow" | "technologies" | null>(null)
+  const [scrollPosition, setScrollPosition] = useState<
+    "timeline" | "workflow" | "technologies" | null
+  >(null);
 
   const defaultOptions = {
     loop: true,
@@ -38,58 +42,45 @@ const SummaryInfo = () => {
     else return 400;
   };
 
-  const handleScroll = async () => {
-    const scrollPosition = document.documentElement.scrollTop;
-    const timelineOffsetTop = timelineRef.current?.offsetTop! + 400 || 0
-    const technologiesOffsetTop = technologiesRef.current?.offsetTop! + 400 || 0
-    const workflowOffsetTop = workFlowRef.current?.offsetTop! + 400 || 0
-    if(scrollPosition >= timelineOffsetTop && scrollPosition < technologiesOffsetTop){
-      setScrollPosition('timeline')
-    }
-    else if (scrollPosition >= technologiesOffsetTop && scrollPosition < workflowOffsetTop){
-      setScrollPosition('technologies')
-    }
-    else if (scrollPosition >= workflowOffsetTop){
-      setScrollPosition('workflow')
-    }
-    else {
-      setScrollPosition(null)
-    }
-    // console.log('technologiesRef', {
-    //   offsetHeight: technologiesRef.current?.offsetHeight,
-    //   offsetTop: technologiesRef.current?.offsetTop,
-    //   scrollTop: technologiesRef.current?.scrollTop,
-    //   obj: technologiesRef.current,
-    // })
-    // console.log('workFlowRef', {
-    //   offsetHeight: workFlowRef.current?.offsetHeight,
-    //   offsetTop: workFlowRef.current?.offsetTop,
-    //   scrollTop: workFlowRef.current?.scrollTop,
-    //   obj: workFlowRef.current,
-    // })
-    // console.log(`window.innerHeight`, window.innerHeight)
-    // console.log(` document.documentElement.scrollTop`,  document.documentElement.scrollTop)
-    // console.log(` document.documentElement.offsetHeight`,  document.documentElement.offsetHeight)
-    // renderMenuUI()
-  };
+ 
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // useEffect(() => {
-  //   renderMenuUI()
-  // }, [document.documentElement.scrollTop, workFlowRef.current, technologiesRef.current, timelineRef.current])
-  
+  const scrollTo = (id: string) => {
+    document.querySelector(`#${id}`)!.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
 
+  const handleScroll = async () => {
+    const scrollPosition = document.documentElement.scrollTop;
+    const timelineOffsetTop = timelineRef.current?.offsetTop! + 400 || 0;
+    const technologiesOffsetTop =
+      technologiesRef.current?.offsetTop! + 400 || 0;
+    const workflowOffsetTop = workFlowRef.current?.offsetTop! + 400 || 0;
+    if (
+      scrollPosition >= timelineOffsetTop &&
+      scrollPosition < technologiesOffsetTop
+    ) {
+      setScrollPosition("timeline");
+    } else if (
+      scrollPosition >= technologiesOffsetTop &&
+      scrollPosition < workflowOffsetTop
+    ) {
+      setScrollPosition("technologies");
+    } else if (scrollPosition >= workflowOffsetTop) {
+      setScrollPosition("workflow");
+    } else {
+      setScrollPosition(null);
+    }
+  };
 
   return (
     <section id="about" className="bg-primary ">
       <Container className="flex py-20 space-x-0 px-5  w-full">
-        {/* <span className="relative flex text-black mb-16 font-bold text-2xl md:text-4xl after:w-full after:bg-black after:h-0.5 after:absolute after:mt-8 after:md:mt-12 ">
-          About me
-        </span> */}
         <div className="hidden  flex-col justify-between sticky top-20 left-0 h-[-webkit-fill-available] w-max lg:flex">
           <div className="flex flex-col gap-10 min-h-[600px]">
             <div className="flex flex-col gap-3 text-start">
@@ -102,27 +93,76 @@ const SummaryInfo = () => {
               </p>
             </div>
             <div className="flex flex-col gap-5">
-              <a href="#timeline">
-              <div className="flex gap-2 items-center">
-                <div className={`w-[25px] h-0.5 bg-slate-400 duration-300 transition-all ${scrollPosition == 'timeline' && 'bg-white !w-[50px]'}`}></div>
-                <span className={`font-semibold text-slate-400 duration-300 transition-all uppercase ${scrollPosition == 'timeline' && '!text-white font-bold'}`}>My Journey</span>
-              </div>
+              <a onClick={() => scrollTo("timeline")}>
+                <div className="flex gap-2 items-center">
+                  <div
+                    className={`w-[25px] h-0.5 bg-slate-400 duration-300 transition-all ${
+                      scrollPosition == "timeline" && "bg-white !w-[50px]"
+                    }`}
+                  ></div>
+                  <span
+                    className={`font-semibold text-slate-400 duration-300 transition-all uppercase ${
+                      scrollPosition == "timeline" && "!text-white font-bold"
+                    }`}
+                  >
+                    My Journey
+                  </span>
+                </div>
               </a>
-              <a href="#technologies">
-              <div className="flex gap-2 items-center">
-                <div className={`w-[25px] h-0.5 bg-slate-400 duration-300 transition-all ${scrollPosition == 'technologies' && 'bg-white !w-[50px]'}`}></div>
-                <span className={`font-semibold text-slate-400 duration-300 transition-all uppercase ${scrollPosition == 'technologies' && '!text-white font-bold'}`}>Skills</span>
-              </div>
+              <a  onClick={() => scrollTo("technologies")}>
+                <div className="flex gap-2 items-center">
+                  <div
+                    className={`w-[25px] h-0.5 bg-slate-400 duration-300 transition-all ${
+                      scrollPosition == "technologies" && "bg-white !w-[50px]"
+                    }`}
+                  ></div>
+                  <span
+                    className={`font-semibold text-slate-400 duration-300 transition-all uppercase ${
+                      scrollPosition == "technologies" &&
+                      "!text-white font-bold"
+                    }`}
+                  >
+                    Skills
+                  </span>
+                </div>
               </a>
-              <a href="#workflow">
-              <div className="flex gap-2 items-center">
-                <div className={`w-[25px] h-0.5 bg-slate-400 duration-300 transition-all ${scrollPosition == 'workflow' && 'bg-white !w-[50px]'}`}></div>
-                <span className={`font-semibold text-slate-400 duration-300 transition-all uppercase ${scrollPosition == 'workflow' && '!text-white font-bold'}`}>Workflow</span>
-              </div>
+              <a  onClick={() => scrollTo("workflow")}>
+                <div className="flex gap-2 items-center">
+                  <div
+                    className={`w-[25px] h-0.5 bg-slate-400 duration-300 transition-all ${
+                      scrollPosition == "workflow" && "bg-white !w-[50px]"
+                    }`}
+                  ></div>
+                  <span
+                    className={`font-semibold text-slate-400 duration-300 transition-all uppercase ${
+                      scrollPosition == "workflow" && "!text-white font-bold"
+                    }`}
+                  >
+                    Workflow
+                  </span>
+                </div>
               </a>
-             
-              
-            
+              {/* <a
+              href={MyResume}
+              download={"Junior_Frontend_Developer_ToMinhTriet.pdf"}
+            >
+              <button
+                className={`flex gap-2 items-center px-6 py-3 border group relative border-blue-600 w-fit text-white font-medium hover:text-black rounded-xl overflow-hidden bg-transparent`}
+              >
+                <IoMdDownload />
+                <span>Download CV</span>
+                <div
+                  className={`absolute hidden top-0 left-0 ${classes.downloadBtn} group-hover:block`}
+                >
+                  <button
+                    className={`flex gap-2 items-center px-6 py-3 border relative w-fit whitespace-nowrap text-black font-medium`}
+                  >
+                    <IoMdDownload />
+                    <span>Download CV</span>
+                  </button>
+                </div>
+              </button>
+            </a> */}
             </div>
           </div>
           {/* <div style={{ maxWidth: 400 }} className="flex">
@@ -183,11 +223,7 @@ const SummaryInfo = () => {
                 <img src={zaloLogo} className="h-6 " alt="" />
               </div>
             </a>
-            <a
-              href="tel:0775509168"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href="tel:0775509168" target="_blank" rel="noreferrer">
               <div className="rounded-full p-[4px] bg-gray-300 transition duration-500 ease-out hover:bg-white hover:scale-110">
                 <img src={phoneLogo} className="h-6 " alt="" />
               </div>
@@ -199,6 +235,16 @@ const SummaryInfo = () => {
             <Timeline timelineRef={timelineRef} />
             <Technologies technologiesRef={technologiesRef} />
             <Workflow workFlowRef={workFlowRef} />
+              <button
+                onClick={() => {
+                  scrollTo("hero")
+                }}
+                className="flex rounded-3xl border px-4 py-2 self-center   border-blue-600 text-white font-semibold gap-2 items-center lg:hidden"
+
+              >
+               <RiCustomerService2Fill />
+<span>Contact me</span>
+              </button>
           </div>
         </div>
       </Container>

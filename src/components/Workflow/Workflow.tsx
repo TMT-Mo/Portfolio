@@ -123,6 +123,7 @@ export const Workflow = ({workFlowRef}: IProps) => {
                   <div className="h-[1px] w-full bg-slate-600"></div>
                 </div>
               ))}
+              
             </div>
     </motion.div>
       </Container>
