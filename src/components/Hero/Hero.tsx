@@ -133,9 +133,9 @@ const Hero = () => {
         </div> */}
         <div
           // data-aos={setTimeout(() => "fade-up", [2000])}
-          className={`${classes["hero-animation"]} flex w-full items-center justify-between flex-col !-translate-y-8 md:flex-row lg:justify-evenly 2xl:w-2/3`}
+          className={`${classes["hero-animation"]} flex w-full items-center justify-between flex-col md:!-translate-y-8 md:flex-row lg:justify-evenly 2xl:w-2/3`}
         >
-          <div className="flex flex-col  space-y-8 p-3 text-center items-center mt-10 md:text-left md:items-start md:w-1/2 md:mt-0">
+          <div className="flex flex-col  space-y-8 p-3 text-center items-center md:text-left md:items-start md:w-1/2 md:mt-0">
             <div className="flex w-full justify-end">
               <button className=" rounded-3xl text-slate-200 border py-2 px-4 font-semibold cursor-none">
                 Junior
