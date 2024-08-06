@@ -145,7 +145,7 @@ const Hero = () => {
               Frontend Developer
             </p>
             <p className="text-md text-justify text-slate-300 md:text-xl lg:text-2xl">
-              I am a <HighlightWord>Junior React developer</HighlightWord> with
+              Hi. My name is Triet but you can call me Mo. I am a <HighlightWord>Junior React developer</HighlightWord> with
               one year of experience, specializing in{" "}
               <HighlightWord>ReactJS </HighlightWord>
               and <HighlightWord>TypeScript.</HighlightWord> Recently, I've

@@ -89,7 +89,7 @@ const SummaryInfo = () => {
                 Junior Frontend Developer
               </h5>
               <p className="whitespace-nowrap">
-                I build friendly UI/ UX and meet customer's requirements
+                I build friendly UI/ UX that meets customer's requirements
               </p>
             </div>
             <div className="flex flex-col gap-5">
